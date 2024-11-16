@@ -48,7 +48,14 @@ class ProductController extends Controller
     return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
 }
 
+ public function show($id)
+    {
+        // Fetch the product by its ID or return 404 if not found
+        $product = Product::findOrFail($id);
 
+        // Return the view and pass the product data
+        return view('admin.products.show', compact('product'));
+    }
     public function edit($id)
     {
         $product = Product::findOrFail($id);

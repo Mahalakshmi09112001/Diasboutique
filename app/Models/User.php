@@ -52,4 +52,9 @@ public function wishlist()
     {
         return $this->hasMany(Order::class);
     }
+    public function customer()
+{
+    return $this->belongsTo(User::class);  // or appropriate model for customer
+}
+
 }

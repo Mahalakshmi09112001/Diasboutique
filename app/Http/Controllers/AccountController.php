@@ -15,15 +15,11 @@ class AccountController extends Controller
         return view('account.index');
     }
 
-public function orders()
-{
-    // Get all orders for the authenticated user
-    $orders = auth()->user()->orders()->with('items.product')->get();
-
-    return view('account.orders', compact('orders'));
-}
-
-
+        public function orders()
+        {
+            $orders = Order::where('user_id', auth()->id())->get();
+            return view('account.orders', compact('orders'));
+        }
 
     public function wishlist()
     {

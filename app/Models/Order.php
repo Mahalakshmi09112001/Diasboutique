@@ -30,4 +30,8 @@ public function product()
     {
         return $this->belongsTo(User::class);
     }
+     public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_id'); // Ensure 'customer_id' is the correct foreign key
+    }
 }
