@@ -89,21 +89,16 @@
          @endforeach
      </div>
     </section>
-    {{-- Newsletter Signup --}}
-    <section class="newsletter">
-        <h2>Subscribe to Our Newsletter</h2>
-        <form action="" method="POST">
-            @csrf
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </section>
+    
     {{-- Contact Info --}}
     <section class="contact-info">
         <h2>Contact Us</h2>
-        <p>Phone: +1 234 567 890</p>
-        <p>Email: info@diasboutique.com</p>
-        <p>Address: 123 Fashion Ave, Style City</p>
+        <p>Phone: 99563 67892</p>
+        <p>Email: diasboutique@gmail.com</p>
+        <p>Address: 6/301 A3A,Fashion Street,<br>
+                chennai-600017<br>
+                Tamilnadu<br>
+                India</p>
     </section>
     </body>
     </html>

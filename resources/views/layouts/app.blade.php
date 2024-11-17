@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 
     <!-- Font Awesome -->
@@ -30,43 +31,74 @@
     
 </head>
 <body>
-   <header>
-        <div class="navbar">
-            <div class="logo"><a href="{{ route('home') }}">DIA'S BOUTIQUE</a></div>
-            <div class="search-bar">
-                <input id="search-input" type="text" placeholder="Search for products...">
-                <button id="search-button" type="button">Search</button>
-            </div>
-            <nav>
-                <ul>
-                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('shop.index') }}">Shop</a></li>
-                    <li><a href="{{ route('cart.index') }}">Cart</a></li>
-                    <li><a href="{{ route('checkout.index') }}">Checkout</a></li>
-                    <li><a href="{{ route('contact') }}">Contact</a></li>
-                      @auth
-                        <li><a href="{{ route('account.index') }}">My Account</a></li>
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </li>
-                    @endauth
-
-                    <!-- Login/Register links visible to guests (unauthenticated users) -->
-                    @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @endguest
-                </ul>
-            </nav>
+  <header>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ route('home') }}">DIA'S BOUTIQUE</a>
         </div>
-    </header>
+        <div class="search-bar">
+            <input id="search-input" type="text" placeholder="Search for products..." />
+            <button id="search-button" type="button">Search</button>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ route('home') }}">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('shop.index') }}">
+                        <i class="fas fa-shopping-bag"></i> Shop
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('cart.index') }}">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('checkout.index') }}">
+                        <i class="fas fa-credit-card"></i> Checkout
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('contact') }}">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                </li>
+                @auth
+                    <li>
+                        <a href="{{ route('account.index') }}">
+                            <i class="fas fa-user-circle"></i> My Account
+                        </a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Log Out
+                            </a>
+                        </form>
+                    </li>
+                @endauth
+                @guest
+                    <li>
+                        <a href="{{ route('login') }}">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register') }}">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                @endguest
+            </ul>
+        </nav>
+    </div>
+</header>
+
 
     <main>
         @if(session('success'))

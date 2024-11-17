@@ -19,45 +19,73 @@
 
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <div class="logo"><a href="{{ route('home') }}">DIA'S BOUTIQUE</a></div>
-            <div class="search-bar">
-                <input id="search-input" type="text" placeholder="Search for products...">
-                <button id="search-button" type="button">Search</button>
-            </div>
-            <nav>
-                <ul>
-                    <!-- Admin-specific Navigation -->
-                    @auth
-                        @if(auth()->user()->UserType ='admin') 
-                            <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
-                            <li><a href="{{ route('admin.users.index') }}">Manage Users</a></li>
-                            <li><a href="{{ route('admin.products.index') }}">Manage Products</a></li>
-                            <li><a href="{{ route('admin.categories.index') }}">Manage Categories</a></li>
-                            <li><a href="{{ route('admin.orders.index') }}">Orders</a></li>
-                        @endif
-
-                        
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-                        </li>
-                    @endauth
-
-                    <!-- Guest links -->
-                    @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @endguest
-                </ul>
-            </nav>
+  <header>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ route('home') }}">DIA'S BOUTIQUE</a>
         </div>
-    </header>
+        
+        <nav>
+            <ul>
+                <!-- Admin-specific Navigation -->
+                @auth
+                    @if(auth()->user()->UserType == 'admin') 
+                        <li>
+                            <a href="{{ route('admin.dashboard') }}">
+                                <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.users.index') }}">
+                                <i class="fas fa-users"></i> Manage Users
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.products.index') }}">
+                                <i class="fas fa-box-open"></i> Manage Products
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.categories.index') }}">
+                                <i class="fas fa-th-list"></i> Manage Categories
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.orders.index') }}">
+                                <i class="fas fa-shopping-cart"></i> Orders
+                            </a>
+                        </li>
+                    @endif
+
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Log Out
+                            </a>
+                        </form>
+                    </li>
+                @endauth
+
+                <!-- Guest links -->
+                @guest
+                    <li>
+                        <a href="{{ route('login') }}">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('register') }}">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                @endguest
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
 
     <main>
         <br>
