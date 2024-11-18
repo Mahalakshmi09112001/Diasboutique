@@ -19,7 +19,7 @@
 
 </head>
 <body>
-  <header>
+<header>
     <div class="navbar">
         <div class="logo">
             <a href="{{ route('home') }}">DIA'S BOUTIQUE</a>
@@ -33,6 +33,16 @@
                         <li>
                             <a href="{{ route('admin.dashboard') }}">
                                 <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('admin.sliders.index') }}">
+                                Manage Sliders
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.banners.index') }}">
+                                <i class="fas fa-image"></i> Manage Banners
                             </a>
                         </li>
                         <li>
@@ -84,6 +94,7 @@
         </nav>
     </div>
 </header>
+
 
 
 

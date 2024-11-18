@@ -36,10 +36,13 @@
         <div class="logo">
             <a href="{{ route('home') }}">DIA'S BOUTIQUE</a>
         </div>
-        <div class="search-bar">
-            <input id="search-input" type="text" placeholder="Search for products..." />
-            <button id="search-button" type="button">Search</button>
-        </div>
+      <div class="search-bar">
+    <input id="search-input" type="text" placeholder="Search for products..." />
+    <button id="search-button">Search</button>
+    <div id="search-results"></div>
+</div>
+
+
         <nav>
             <ul>
                 <li>
@@ -138,6 +141,7 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.umd.min.js"
 ></script>  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    
 
 </body>
 </html>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ShopController;
@@ -20,7 +22,9 @@ use App\Http\Controllers\Admin\{
     SettingController,
     PromotionController,
     UserController,
-    ContentController
+    ContentController,
+    SliderController,
+    BannerController
 };
 
 // ADMIN ROUTES
@@ -61,9 +65,14 @@ Route::prefix('admin')
         // User Management
         Route::resource('users', UserController::class);
 
+        //Slider Management
+        Route::resource('sliders', SliderController::class);
+         Route::resource('banners', BannerController::class);
+
         // Content Management
         Route::get('content/cms', [ContentController::class, 'cms'])->name('content.cms');
         Route::get('content/blog', [ContentController::class, 'blog'])->name('content.blog');
+         Route::get('/contacts', [AdminController::class, 'showContacts'])->name('admin.contacts.index');
     });
 
 // PUBLIC ROUTES
@@ -73,6 +82,8 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 // Product Pages
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{id}', [ShopController::class, 'show'])->name('shop.show');
+Route::get('/shop/category/{id}', [ShopController::class, 'filterByCategory'])->name('shop.category');
+
 
 // Cart Pages - Authenticated Users Only
 Route::middleware('auth')->group(function () {
@@ -104,8 +115,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Static Pages
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 
 

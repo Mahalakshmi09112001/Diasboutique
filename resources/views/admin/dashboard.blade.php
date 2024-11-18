@@ -102,23 +102,32 @@
         </div>
     </div>
 
-    <!-- Quick Actions -->
+    <!-- Contact Form Messages -->
     <div class="card mb-4">
         <div class="card-header">
-            <h4 class="card-title">Quick Actions</h4>
+            <h4 class="card-title">All Contact Form Messages</h4>
         </div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <a href="{{ route('admin.products.index') }}" class="btn btn-info w-100">Manage Products</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="{{ route('admin.categories.index') }}" class="btn btn-success w-100">Manage Categories</a>
-                </div>
-                <div class="col-md-4">
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-warning w-100">Manage Users</a>
-                </div>
-            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($allContacts as $contact)
+                    <tr>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td>{{ Str::limit($contact->message, 50) }}</td>
+                        <td>{{ $contact->created_at->format('d M Y') }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

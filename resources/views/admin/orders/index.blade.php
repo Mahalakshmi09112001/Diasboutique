@@ -18,7 +18,7 @@
            @foreach ($orders as $order)
     <tr>
         <td>{{ $order->id }}</td>
-        <td>{{ $order->customer ? $order->customer->name : 'No customer' }}</td>
+        <td>{{ $order->user->name }}</td>
         <td>{{ $order->status }}</td>
         <td><a href="{{ route('admin.orders.show', $order) }}" class="btn btn-info">View</a></td>
     </tr>

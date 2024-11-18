@@ -6,16 +6,18 @@
     <h1>Your Wishlist</h1>
     <ul>
        
-        @foreach($wishlist as $item)
+      
              <div class="products">
+                  @foreach($wishlist as $item)
             <div class="product">
                 <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{$item->product->name }}" width="150px" height="100px">
                 <h3><a href="{{ url('/shop/' . $item->product->id) }}">{{ $item->product->name }}</a></h3>
                 <p class="original-price">₹{{ $item->product->mrp }}</p>
                 <p class="sale-price">₹ {{$item->product->price }}</p>
             </div>
-       </div>
         @endforeach
+
+       </div>
     </ul>
     <a href="{{ route('account.index') }}">Back to Account</a>
 </div>

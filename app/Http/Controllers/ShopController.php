@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Banner;
+
 
 use Illuminate\Http\Request;
 
@@ -11,9 +13,19 @@ class ShopController extends Controller
 {
     public function index()
     {
+         $banners = Banner::all(); // Fetching banners
         $products = Product::all();
-        return view('shop.index', compact('products'));
+         $categories = Category::all(); // Fetch all categories
+        return view('shop.index', compact('products','categories','banners'));
     }
+ public function filterByCategory($id)
+    {
+        $categories = Category::all(); // Fetch all categories
+        $products = Product::where('category_id', $id)->get(); // Filter products by category
+
+        return view('shop.index', compact('categories', 'products'));
+    }
+
 
    public function show($id)
 {

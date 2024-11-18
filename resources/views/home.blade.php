@@ -17,36 +17,35 @@
 
     <!-- Carousel Section -->
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active" >
-                <img class="d-block w-100 slideImg" src="{{asset('assets/img/slides/slider2new.jpg')}}" alt="First slide" >
-                <div class="carousel-caption d-none d-md-block banner">
-                        <h1>Special Offer!</h1>
-                        <p>Get 10% off on all products!</p>
-                        <button onclick="window.location.href='sale.html'">Shop Now</button>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100 slideImg" src="{{asset('assets/img/slides/slider3new.jpg')}}" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100 slideImg" src="{{asset('assets/img/slides/slider2new.jpg')}}" alt="Third slide">
-                </div>
+    <ol class="carousel-indicators">
+        @foreach($sliders as $index => $slider)
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+        @endforeach
+    </ol>
+    <div class="carousel-inner">
+        @foreach($sliders as $index => $slider)
+            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                <img class="d-block w-100 slideImg" src="{{ asset('storage/' . $slider->image) }}" alt="Slide {{ $index + 1 }}">
+                {{-- @if($slider->title || $slider->description)
+                    <div class="carousel-caption d-none d-md-block banner">
+                        <h1>{{ $slider->title }}</h1>
+                        <p>{{ $slider->description }}</p>
+                        <button onclick="window.location.href='{{ route('shop.index') }}'">Shop Now</button>
+                    </div>
+                @endif --}}
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            </div>
+        @endforeach
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
              {{-- New Arrivals --}}
         <section class="new-arrivals">
            <h1>New Arrivals</h1>
@@ -75,7 +74,7 @@
     <section class="about-us">
         <h2>About Us</h2>
         <p>DIAS BOUTIQUE offers a curated selection of the latest fashion trends and luxury wear.</p>
-        <a href="" class="btn">Learn More</a>
+        <a href="{{ route('about') }}" class="btn">Learn More</a>
     </section>
     <section>
       <h1>Explore Collections</h1>
