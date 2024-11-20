@@ -35,6 +35,8 @@
         </div>
     </section>
 
+    <!-- Search Form -->
+  
     <div class="container my-5">
         <div class="row">
             <!-- Sidebar for Categories -->
@@ -59,7 +61,11 @@
             <section class="col-md-9">
                 @if($products->isEmpty())
                     <div class="alert alert-warning text-center">
-                        No products found in this category.
+                        @isset($query)
+                            No products found for "{{ $query }}"!
+                        @else
+                            No products found.
+                        @endisset
                     </div>
                 @else
                     <div class="row">

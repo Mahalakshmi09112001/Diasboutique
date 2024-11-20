@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\Admin\{
     SliderController,
     BannerController
 };
+
 
 // ADMIN ROUTES
 // Group all admin routes with middleware and prefix
@@ -72,7 +74,6 @@ Route::prefix('admin')
         // Content Management
         Route::get('content/cms', [ContentController::class, 'cms'])->name('content.cms');
         Route::get('content/blog', [ContentController::class, 'blog'])->name('content.blog');
-         Route::get('/contacts', [AdminController::class, 'showContacts'])->name('admin.contacts.index');
     });
 
 // PUBLIC ROUTES
@@ -115,6 +116,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // Static Pages
+Route::get('/shop/search', [SearchController::class, 'search'])->name('shop.search');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');

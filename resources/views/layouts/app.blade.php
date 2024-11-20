@@ -37,10 +37,21 @@
             <a href="{{ route('home') }}">DIA'S BOUTIQUE</a>
         </div>
       <div class="search-bar">
-    <input id="search-input" type="text" placeholder="Search for products..." />
-    <button id="search-button">Search</button>
-    <div id="search-results"></div>
+        <form method="GET" action="{{ route('shop.index') }}" class="d-flex justify-content-center">
+            <input 
+                type="text" 
+                name="query" 
+                placeholder="Search for products..." 
+                class="form-control w-100"
+                value="{{ request()->query('query') }}"
+                required
+            />
+            <button type="submit" class="btn btn-dark ml-2">Search</button>
+        </form>
+  
 </div>
+ 
+
 
 
         <nav>
