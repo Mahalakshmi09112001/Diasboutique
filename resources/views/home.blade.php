@@ -49,18 +49,38 @@
              {{-- New Arrivals --}}
         <section class="new-arrivals">
            <h1>New Arrivals</h1>
-            <div class="products">
-                @foreach($newArrivals as $product)
-                 <div class="product">
-                   <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                   <h3><a href="{{ url('/shop/' . $product->id) }}">{{ $product->name }}</a></h3>
-                    <p class="sale-price">Price : {{ $product->price }}</p>
-                  </div>
-                @endforeach
-            </div>
+             <div class="row">
+                    @foreach($newArrivals as $product)
+                            <div class="col-lg-2 col-md-4 mb-4 ">
+                                <div class="card h-100 shadow-sm">
+                                    
+                                   <div class="view overlay" style="height: 200px; overflow: hidden;">
+                                        <img src="{{ asset('storage/' . $product->image) }}" 
+                                            class="card-img-top w-100 " 
+                                            alt="{{ $product->name }}" 
+                                            style="background: cover;">
+                                            
+                                    </div>
+
+                                    <div class="card-body text-center">
+                                <span class="badge badge-primary">New</span>
+
+                                        <h6 class="card-title">
+                                            <a href="{{ url('/shop/' . $product->id) }}" class="text-dark">
+                                                {{ $product->name }}
+                                            </a>
+                                        </h6>
+                                        <p class="text-muted"><s>₹{{ $product->mrp }}</s></p>
+                                        <p class="font-weight-bold text-danger">₹{{ $product->price }}</p>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        @endforeach
+         </div>
         </section>
         {{-- Featured Collections --}}
-    <section class="featured-collections">
+    {{-- <section class="featured-collections">
         <h2>Featured Collections</h2>
         
            <div class="collections">
@@ -69,7 +89,7 @@
               <div class="collection-item">{{$category->name}}</div>
                @endforeach
            </div>
-    </section>
+    </section> --}}
      {{-- About Us --}}
     <section class="about-us">
         <h2>About Us</h2>
@@ -78,15 +98,32 @@
     </section>
     <section>
       <h1>Explore Collections</h1>
-     <div class="products">
-         @foreach($exploreCollections as $product)
-         <div class="product">
-                   <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                   <h3>{{ $product->name }}</h3>
-                    <p class="sale-price">Price : {{ $product->price }}</p>
-                  </div>
-         @endforeach
-     </div>
+
+          <div class="row">
+                    @foreach($exploreCollections as $product)
+                            <div class="col-lg-2 col-md-4 mb-4">
+                                <div class="card h-100 shadow-sm">
+                                   <div class="view overlay" style="height: 200px; overflow: hidden;">
+                                        <img src="{{ asset('storage/' . $product->image) }}" 
+                                            class="card-img-top w-100 " 
+                                            alt="{{ $product->name }}" 
+                                            style="background: cover;">
+                                    </div>
+
+                                    <div class="card-body text-center">
+                                        <h6 class="card-title">
+                                            <a href="{{ url('/shop/' . $product->id) }}" class="text-dark">
+                                                {{ $product->name }}
+                                            </a>
+                                        </h6>
+                                        <p class="text-muted"><s>₹{{ $product->mrp }}</s></p>
+                                        <p class="font-weight-bold text-danger">₹{{ $product->price }}</p>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        @endforeach
+         </div>
     </section>
     
     {{-- Contact Info --}}
