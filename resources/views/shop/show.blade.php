@@ -52,9 +52,6 @@
           <p>
             {{ $product->description }}
           </p>
-
-          
-
           <hr />
 
           
@@ -125,7 +122,4 @@
     </div>
   </div>
 </section>
-
-
-
 @endsection
