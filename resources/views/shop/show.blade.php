@@ -44,8 +44,8 @@
 
           <div class="mb-3">
           <span class="original-price">Category : {{ $product->category->name }}</span><br>
-            <p class="original-price">₹{{ $product->mrp }}</p>
-             <p class="h5 sale-price text-success">Rs : {{ $product->price }} /-</p>
+            <p class="text-muted">₹ : <s>{{ $product->mrp }}</s></p>
+             <p class="h4 sale-price text-success">Rs : <b>{{ $product->price }}</b> /-</p>
             {{-- <span class="text-muted">/per box</span> --}}
           </div>
 

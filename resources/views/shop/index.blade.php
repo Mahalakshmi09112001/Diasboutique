@@ -74,7 +74,7 @@
                                 <div class="card h-100 shadow-sm">
                                    <div class="view overlay" style="height: 200px; overflow: hidden;">
                                         <img src="{{ asset('storage/' . $product->image) }}" 
-                                            class="card-img-top w-100 h-100" 
+                                            class="card-img-top w-100 " 
                                             alt="{{ $product->name }}" 
                                             style="background: cover;">
                                     </div>
