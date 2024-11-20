@@ -92,14 +92,14 @@
       <div class="col-lg-8 mb-4">
         <div class="border rounded-2 px-3 py-2 bg-white">
           <!-- Pills navs -->
-           <div class="col-lg-4">
-        <div class="px-0 border rounded-2 shadow-0">
+        <div class="px-0 ">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Similar items</h5>
-           
-                <div class="d-flex mb-3">
-                   @foreach($similarProducts as $similarProduct)
+          <h5 class="card-title">Similar items</h5>
+            <div class="card-body d-flex mb-3">
+          @foreach($similarProducts as $similarProduct)
+
+                <div class="">
+                  
                     <a href="{{ url('/shop/' . $similarProduct->id) }}" class="me-3">
                         <img src="{{ asset('storage/' . $similarProduct->image) }}" 
                             style="min-width: 96px; height: 96px;" 
@@ -111,13 +111,13 @@
                         </a>
                         <strong class="text-dark">Rs: {{ $similarProduct->price }}</strong>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             
               </div>
+
             </div>
           </div>
-        </div>
       </div>
         </div>
       </div>
