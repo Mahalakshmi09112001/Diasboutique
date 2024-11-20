@@ -20,10 +20,11 @@ class ShopController extends Controller
     }
  public function filterByCategory($id)
     {
+        $banners = Banner::all();
         $categories = Category::all(); // Fetch all categories
         $products = Product::where('category_id', $id)->get(); // Filter products by category
 
-        return view('shop.index', compact('categories', 'products'));
+        return view('shop.index', compact('categories', 'products','banners'));
     }
 
 

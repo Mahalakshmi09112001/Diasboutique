@@ -34,4 +34,8 @@ public function product()
     {
         return $this->belongsTo(User::class, 'customer_id'); // Ensure 'customer_id' is the correct foreign key
     }
+    public function orderItems()
+{
+    return $this->hasMany(OrderItem::class);
+}
 }

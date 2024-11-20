@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
 <div class="container">
     <h1>Shopping Cart</h1>
 
     @if($cartItems->isEmpty())
         <p>Your cart is empty.</p>
+        <a href="{{ route('shop.index') }}" class="btn btn-primary">Shop Now</a>
     @else
         <table class="table">
             <thead>
@@ -21,9 +23,11 @@
             <tbody>
                 @foreach($cartItems as $item)
                     <tr>
-                     <td><img src="{{ asset('storage/' . $item->product->image) }}" 
-                            style="min-width: 96px; height: 96px;" 
-                            class="img-md img-thumbnail" /></td>
+                        <td>
+                            <img src="{{ asset('storage/' . $item->product->image) }}" 
+                                 style="min-width: 96px; height: 96px;" 
+                                 class="img-md img-thumbnail" />
+                        </td>
                         <td>{{ $item->product->name }}</td>
                         <td>
                             <form action="{{ route('cart.update', $item->id) }}" method="POST">
@@ -50,6 +54,9 @@
         <p class="mt-3">
             <strong>Total: Rs: {{ $cartItems->sum(fn($item) => $item->product->price * $item->quantity) }}</strong>
         </p>
+
+        <a href="{{ route('checkout.index') }}" class="btn btn-success">Proceed to Checkout</a>
     @endif
 </div>
+<br>
 @endsection

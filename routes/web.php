@@ -40,7 +40,7 @@ Route::prefix('admin')
         Route::resource('products', ProductController::class);
 
         // Order Management
-        Route::resource('orders', OrderController::class)->only(['index', 'show']);
+        Route::resource('orders', OrderController::class)->only(['index', 'show','update']);
 
         // Customer Management
         Route::get('customers', [CustomerController::class, 'index'])->name('customers.index');
