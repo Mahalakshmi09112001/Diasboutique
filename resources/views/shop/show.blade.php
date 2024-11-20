@@ -97,8 +97,9 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Similar items</h5>
-            @foreach($similarProducts as $similarProduct)
+           
                 <div class="d-flex mb-3">
+                   @foreach($similarProducts as $similarProduct)
                     <a href="{{ url('/shop/' . $similarProduct->id) }}" class="me-3">
                         <img src="{{ asset('storage/' . $similarProduct->image) }}" 
                             style="min-width: 96px; height: 96px;" 
@@ -110,8 +111,9 @@
                         </a>
                         <strong class="text-dark">Rs: {{ $similarProduct->price }}</strong>
                     </div>
+                    @endforeach
                 </div>
-            @endforeach
+            
               </div>
             </div>
           </div>
