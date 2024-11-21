@@ -49,7 +49,7 @@
              {{-- New Arrivals --}}
         <section class="new-arrivals">
            <h1>New Arrivals</h1>
-             <div class="row">
+             <div class="row" style="display: flex;justify-content: center;">
                     @foreach($newArrivals as $product)
                             <div class="col-lg-2 col-md-4 mb-4 ">
                                 <div class="card h-100 shadow-sm">
@@ -67,7 +67,7 @@
 
                                         <h6 class="card-title">
                                             <a href="{{ url('/shop/' . $product->id) }}" class="text-dark">
-                                                {{ $product->name }}
+                                                {{ $product->short_name }}
                                             </a>
                                         </h6>
                                         <p class="text-muted"><s>₹{{ $product->mrp }}</s></p>
@@ -99,7 +99,7 @@
     <section>
       <h1>Explore Collections</h1>
 
-          <div class="row">
+          <div class="row" style="display: flex;justify-content: center;">
                     @foreach($exploreCollections as $product)
                             <div class="col-lg-2 col-md-4 mb-4">
                                 <div class="card h-100 shadow-sm">
@@ -111,9 +111,10 @@
                                     </div>
 
                                     <div class="card-body text-center">
+                                        
                                         <h6 class="card-title">
                                             <a href="{{ url('/shop/' . $product->id) }}" class="text-dark">
-                                                {{ $product->name }}
+                                                {{ $product->short_name }}
                                             </a>
                                         </h6>
                                         <p class="text-muted"><s>₹{{ $product->mrp }}</s></p>
